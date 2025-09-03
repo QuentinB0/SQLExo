@@ -1,8 +1,86 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Accueil";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="mb-5">
+                <h1 class="display-4 text-primary fw-bold">
+                    <i class="fas fa-blog"></i> Bienvenue sur le Gestionnaire de Posts
+                </h1>
+                <p class="lead text-muted">
+                    Une application moderne et intuitive pour gérer vos posts et articles
+                </p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-list fa-3x text-primary"></i>
+                            </div>
+                            <h5 class="card-title">Voir les Posts</h5>
+                            <p class="card-text">Consultez tous vos posts existants avec une interface moderne et intuitive.</p>
+                            <a asp-controller="Post" asp-action="Index" class="btn btn-primary">
+                                <i class="fas fa-eye"></i> Voir les Posts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-plus fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title">Créer un Post</h5>
+                            <p class="card-text">Créez facilement de nouveaux posts avec un formulaire simple et efficace.</p>
+                            <a asp-controller="Post" asp-action="Create" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Créer un Post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-cogs fa-3x text-warning"></i>
+                            </div>
+                            <h5 class="card-title">Gérer les Posts</h5>
+                            <p class="card-text">Modifiez, supprimez et gérez vos posts selon vos besoins.</p>
+                            <a asp-controller="Post" asp-action="Index" class="btn btn-warning">
+                                <i class="fas fa-tools"></i> Gérer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info" role="alert">
+                <h5 class="alert-heading">
+                    <i class="fas fa-info-circle"></i> Fonctionnalités principales
+                </h5>
+                <ul class="mb-0 text-start">
+                    <li><strong>Interface moderne :</strong> Design responsive avec Bootstrap 5</li>
+                    <li><strong>Validation complète :</strong> Validation côté client et serveur</li>
+                    <li><strong>Gestion CRUD :</strong> Créer, lire, modifier et supprimer des posts</li>
+                    <li><strong>Navigation intuitive :</strong> Menu de navigation clair et accessible</li>
+                </ul>
+            </div>
+
+            <div class="mt-4">
+                <a asp-controller="Post" asp-action="Index" class="btn btn-lg btn-primary me-3">
+                    <i class="fas fa-rocket"></i> Commencer maintenant
+                </a>
+                <a href="https://learn.microsoft.com/aspnet/core" class="btn btn-lg btn-outline-secondary" target="_blank">
+                    <i class="fas fa-book"></i> En savoir plus sur ASP.NET Core
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

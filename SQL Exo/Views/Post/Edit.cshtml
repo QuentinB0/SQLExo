@@ -1,0 +1,103 @@
+@model SQL_Exo.Models.Post
+
+@{
+    ViewData["Title"] = "Modifier le Post";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-edit"></i> Modifier le Post
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="PostId" />
+                        <input type="hidden" asp-for="DateCreation" />
+                        
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Titre" class="form-label fw-bold">
+                                <i class="fas fa-heading"></i> @Html.DisplayNameFor(model => model.Titre)
+                            </label>
+                            <input asp-for="Titre" class="form-control" placeholder="Entrez le titre de votre post" />
+                            <span asp-validation-for="Titre" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Contenu" class="form-label fw-bold">
+                                <i class="fas fa-align-left"></i> @Html.DisplayNameFor(model => model.Contenu)
+                            </label>
+                            <textarea asp-for="Contenu" class="form-control" rows="6" 
+                                      placeholder="Entrez le contenu de votre post"></textarea>
+                            <span asp-validation-for="Contenu" class="text-danger"></span>
+                            <div class="form-text">Maximum 500 caractères</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Auteur" class="form-label fw-bold">
+                                <i class="fas fa-user"></i> @Html.DisplayNameFor(model => model.Auteur)
+                            </label>
+                            <input asp-for="Auteur" class="form-control" placeholder="Votre nom (optionnel)" />
+                            <span asp-validation-for="Auteur" class="text-danger"></span>
+                            <div class="form-text">Laissez vide pour rester anonyme</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-calendar"></i> Date de création
+                            </label>
+                            <input type="text" class="form-control" value="@Model.DateCreation.ToString("dd/MM/yyyy HH:mm")" readonly />
+                            <div class="form-text">Cette date ne peut pas être modifiée</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Details" asp-route-id="@Model.PostId" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Retour aux détails
+                            </a>
+                            <div>
+                                <a asp-action="Index" class="btn btn-outline-secondary">
+                                    <i class="fas fa-list"></i> Annuler
+                                </a>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fas fa-save"></i> Enregistrer les modifications
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Validation côté client personnalisée
+        document.addEventListener('DOMContentLoaded', function() {
+            const contenuTextarea = document.getElementById('Contenu');
+            const titreInput = document.getElementById('Titre');
+            
+            // Validation en temps réel pour le titre
+            titreInput.addEventListener('input', function() {
+                if (this.value.length > 100) {
+                    this.value = this.value.substring(0, 100);
+                }
+            });
+            
+            // Validation en temps réel pour le contenu
+            contenuTextarea.addEventListener('input', function() {
+                if (this.value.length > 500) {
+                    this.value = this.value.substring(0, 500);
+                }
+            });
+        });
+    </script>
+}
+

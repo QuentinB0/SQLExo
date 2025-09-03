@@ -1,0 +1,115 @@
+@model SQL_Exo.Models.Post
+
+@{
+    ViewData["Title"] = "Détails du Post";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-eye"></i> Détails du Post
+                        </h3>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model.PostId" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Modifier
+                            </a>
+                            <a asp-action="Index" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-arrow-left"></i> Retour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <dl class="row">
+                                <dt class="col-sm-3 fw-bold">
+                                    <i class="fas fa-heading text-primary"></i> @Html.DisplayNameFor(model => model.Titre)
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <h4 class="text-primary">@Model.Titre</h4>
+                                </dd>
+
+                                <dt class="col-sm-3 fw-bold">
+                                    <i class="fas fa-user text-info"></i> @Html.DisplayNameFor(model => model.Auteur)
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <span class="badge bg-info text-dark">@Model.Auteur</span>
+                                </dd>
+
+                                <dt class="col-sm-3 fw-bold">
+                                    <i class="fas fa-calendar text-success"></i> @Html.DisplayNameFor(model => model.DateCreation)
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <span class="text-muted">@Model.DateCreation.ToString("dddd, dd MMMM yyyy 'à' HH:mm")</span>
+                                </dd>
+
+                                <dt class="col-sm-3 fw-bold">
+                                    <i class="fas fa-align-left text-warning"></i> @Html.DisplayNameFor(model => model.Contenu)
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <div class="border rounded p-3 bg-light">
+                                        <p class="mb-0" style="white-space: pre-wrap;">@Model.Contenu</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-list"></i> Retour à la liste
+                        </a>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model.PostId" class="btn btn-warning">
+                                <i class="fas fa-edit"></i> Modifier ce post
+                            </a>
+                            <button type="button" class="btn btn-danger" 
+                                    onclick="confirmDelete(@Model.PostId, '@Model.Titre')">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmer la suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer le post "<span id="postTitle"></span>" ?</p>
+                <p class="text-danger"><small>Cette action est irréversible.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(postId, postTitle) {
+            document.getElementById('postTitle').textContent = postTitle;
+            document.getElementById('deleteForm').action = '/Post/Delete/' + postId;
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        }
+    </script>
+}
+
