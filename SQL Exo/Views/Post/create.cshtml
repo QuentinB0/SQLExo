@@ -6,50 +6,51 @@
 
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h3 class="card-title mb-0">
-                        <i class="fas fa-plus-circle"></i> Créer un nouveau Post
+        <div class="col-lg-8">
+            <div class="card create-post-card shadow-lg border-0">
+                <div class="card-header create-post-header text-white">
+                    <h3 class="card-title mb-0 text-center">
+                        ✨ Créer un nouveau Post ✨
                     </h3>
+                    <p class="text-center mb-0 mt-2 opacity-75">Partagez vos idées avec la communauté !</p>
                 </div>
-                <div class="card-body">
-                    <form asp-action="Create" method="post">
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post" class="create-form">
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
                         
-                        <div class="mb-3">
-                            <label asp-for="Titre" class="form-label fw-bold">
-                                <i class="fas fa-heading"></i> @Html.DisplayNameFor(model => model.Titre)
+                        <div class="mb-4">
+                            <label asp-for="Titre" class="form-label fw-bold create-label">
+                                📝 Titre de votre post
                             </label>
-                            <input asp-for="Titre" class="form-control" placeholder="Entrez le titre de votre post" />
+                            <input asp-for="Titre" class="form-control create-input" placeholder="Un titre accrocheur..." />
                             <span asp-validation-for="Titre" class="text-danger"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Contenu" class="form-label fw-bold">
-                                <i class="fas fa-align-left"></i> @Html.DisplayNameFor(model => model.Contenu)
+                        <div class="mb-4">
+                            <label asp-for="Contenu" class="form-label fw-bold create-label">
+                                💭 Contenu
                             </label>
-                            <textarea asp-for="Contenu" class="form-control" rows="6" 
-                                      placeholder="Entrez le contenu de votre post"></textarea>
+                            <textarea asp-for="Contenu" class="form-control create-textarea" rows="6" 
+                                      placeholder="Racontez votre histoire, partagez une idée, posez une question..."></textarea>
                             <span asp-validation-for="Contenu" class="text-danger"></span>
-                            <div class="form-text">Maximum 500 caractères</div>
+                            <div class="form-text text-muted">Maximum 500 caractères</div>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Auteur" class="form-label fw-bold">
-                                <i class="fas fa-user"></i> @Html.DisplayNameFor(model => model.Auteur)
+                        <div class="mb-4">
+                            <label asp-for="Auteur" class="form-label fw-bold create-label">
+                                👤 Votre nom
                             </label>
-                            <input asp-for="Auteur" class="form-control" placeholder="Votre nom (optionnel)" />
+                            <input asp-for="Auteur" class="form-control create-input" placeholder="Comment voulez-vous être appelé ? (optionnel)" />
                             <span asp-validation-for="Auteur" class="text-danger"></span>
-                            <div class="form-text">Laissez vide pour rester anonyme</div>
+                            <div class="form-text text-muted">Laissez vide pour rester anonyme</div>
                         </div>
 
-                        <div class="d-flex justify-content-between">
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Retour à la liste
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a asp-action="Index" class="btn btn-outline-primary btn-lg">
+                                ← Retour au Feed
                             </a>
-                            <button type="submit" class="btn btn-success">
-                                <i class="fas fa-save"></i> Créer le Post
+                            <button type="submit" class="btn btn-primary btn-lg create-submit-btn">
+                                🚀 Publier le Post
                             </button>
                         </div>
                     </form>
