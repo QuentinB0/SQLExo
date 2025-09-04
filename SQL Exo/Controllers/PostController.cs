@@ -20,6 +20,25 @@ namespace SQL_Exo.Controllers
             return View(posts);
         }
 
+        // GET: /Post/ListJson
+        [HttpGet]
+        public IActionResult ListJson()
+        {
+            var posts = _context.Posts
+                .OrderByDescending(p => p.DateCreation)
+                .Select(p => new
+                {
+                    p.PostId,
+                    p.Titre,
+                    p.Contenu,
+                    p.Auteur,
+                    DateCreation = p.DateCreation.ToString("yyyy-MM-dd HH:mm:ss")
+                })
+                .ToList();
+
+            return Json(new { success = true, data = posts });
+        }
+
         // GET: /Post/Create
         public IActionResult Create()
         {
@@ -46,6 +65,40 @@ namespace SQL_Exo.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(post);
+        }
+
+        // POST: /Post/CreateAjax
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateAjax([FromForm] Post post)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return BadRequest(new { success = false, errors });
+            }
+
+            post.DateCreation = DateTime.Now;
+            if (string.IsNullOrEmpty(post.Auteur))
+            {
+                post.Auteur = "Anonyme";
+            }
+
+            _context.Posts.Add(post);
+            _context.SaveChanges();
+
+            return Json(new
+            {
+                success = true,
+                data = new
+                {
+                    post.PostId,
+                    post.Titre,
+                    post.Contenu,
+                    post.Auteur,
+                    DateCreation = post.DateCreation.ToString("yyyy-MM-dd HH:mm:ss")
+                }
+            });
         }
 
         // GET: /Post/Details/5

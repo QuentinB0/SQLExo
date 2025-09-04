@@ -22,6 +22,6 @@ namespace SQL_Exo.Models
 
         [Display(Name = "Auteur")]
         [StringLength(50, ErrorMessage = "Le nom d'auteur ne peut pas dépasser {1} caractères")]
-        public string Auteur { get; set; } = "Anonyme";
+        public string? Auteur { get; set; }
     }
 }

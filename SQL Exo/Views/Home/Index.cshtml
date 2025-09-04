@@ -4,28 +4,20 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-            <div class="mb-5">
-                <h1 class="display-4 text-primary fw-bold">
-                    <i class="fas fa-blog"></i> Bienvenue sur le Gestionnaire de Posts
-                </h1>
-                <p class="lead text-muted">
-                    Une application moderne et intuitive pour gérer vos posts et articles
-                </p>
+        <div class="col-lg-10">
+            <div class="hero mb-5 text-center">
+                <h1 class="display-4 fw-bold">Bienvenue sur SocialFun</h1>
+                <p class="lead">Un mini-réseau social sobre, lisible et moderne</p>
+                
             </div>
 
             <div class="row g-4 mb-5">
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-list fa-3x text-primary"></i>
-                            </div>
-                            <h5 class="card-title">Voir les Posts</h5>
-                            <p class="card-text">Consultez tous vos posts existants avec une interface moderne et intuitive.</p>
-                            <a asp-controller="Post" asp-action="Index" class="btn btn-primary">
-                                <i class="fas fa-eye"></i> Voir les Posts
-                            </a>
+                            <div class="mb-3"><span class="badge badge-fun rounded-pill px-3 py-2">Feed</span></div>
+                            <h5 class="card-title">Feed en temps réel</h5>
+                            <p class="card-text">Explorez les derniers posts, rafraîchissement automatique</p>
                         </div>
                     </div>
                 </div>
@@ -33,14 +25,9 @@
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-plus fa-3x text-success"></i>
-                            </div>
-                            <h5 class="card-title">Créer un Post</h5>
-                            <p class="card-text">Créez facilement de nouveaux posts avec un formulaire simple et efficace.</p>
-                            <a asp-controller="Post" asp-action="Create" class="btn btn-success">
-                                <i class="fas fa-plus"></i> Créer un Post
-                            </a>
+                            <div class="mb-3"><span class="badge badge-fun rounded-pill px-3 py-2">Simple</span></div>
+                            <h5 class="card-title">Expérience fluide</h5>
+                            <p class="card-text">Interface agréable, claire et responsive</p>
                         </div>
                     </div>
                 </div>
@@ -48,14 +35,9 @@
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="fas fa-cogs fa-3x text-warning"></i>
-                            </div>
-                            <h5 class="card-title">Gérer les Posts</h5>
-                            <p class="card-text">Modifiez, supprimez et gérez vos posts selon vos besoins.</p>
-                            <a asp-controller="Post" asp-action="Index" class="btn btn-warning">
-                                <i class="fas fa-tools"></i> Gérer
-                            </a>
+                            <div class="mb-3"><span class="badge badge-fun rounded-pill px-3 py-2">Sûr</span></div>
+                            <h5 class="card-title">Technos modernes</h5>
+                            <p class="card-text">ASP.NET Core + Bootstrap pour des performances au top</p>
                         </div>
                     </div>
                 </div>
@@ -66,21 +48,14 @@
                     <i class="fas fa-info-circle"></i> Fonctionnalités principales
                 </h5>
                 <ul class="mb-0 text-start">
-                    <li><strong>Interface moderne :</strong> Design responsive avec Bootstrap 5</li>
-                    <li><strong>Validation complète :</strong> Validation côté client et serveur</li>
-                    <li><strong>Gestion CRUD :</strong> Créer, lire, modifier et supprimer des posts</li>
-                    <li><strong>Navigation intuitive :</strong> Menu de navigation clair et accessible</li>
+                    <li><strong>Lisibilité :</strong> Couleurs sobres, contrastes forts</li>
+                    <li><strong>Feed dynamique :</strong> Rafraîchissement automatique</li>
+                    <li><strong>Mobile-first :</strong> Expérience agréable sur mobile</li>
+                    <li><strong>Performance :</strong> UI réactive et efficace</li>
                 </ul>
             </div>
 
-            <div class="mt-4">
-                <a asp-controller="Post" asp-action="Index" class="btn btn-lg btn-primary me-3">
-                    <i class="fas fa-rocket"></i> Commencer maintenant
-                </a>
-                <a href="https://learn.microsoft.com/aspnet/core" class="btn btn-lg btn-outline-secondary" target="_blank">
-                    <i class="fas fa-book"></i> En savoir plus sur ASP.NET Core
-                </a>
-            </div>
+            
         </div>
     </div>
 </div>
